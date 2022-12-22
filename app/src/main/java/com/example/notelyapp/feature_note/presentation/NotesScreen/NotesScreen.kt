@@ -113,7 +113,7 @@ fun NotesScreen(
                 }
 
                 Spacer(modifier = Modifier.width(16.dp))
-                if (!viewModel.CategoryListIsEmpty){
+
 
                     val mRememberObserver = remember { mutableStateOf("") }
                     val scrollState = rememberScrollState()
@@ -126,7 +126,6 @@ fun NotesScreen(
                                         CategoryItemNoteScreen(
                                             category = category,
 
-
                                         ) {
                                             viewModel.searchCategory(category.category)
                                             mRememberObserver.value = category.category
@@ -135,25 +134,10 @@ fun NotesScreen(
 
                         }
                     }
-
-                }else{
-                    Column(Modifier
-                        .fillMaxWidth()
-                        .padding(20.dp)){
-                        ExclamationImage(Modifier)
-                        Text(text = "No Note Found",Modifier
-
-                            .align(CenterHorizontally)
-                            , fontSize = 20.sp, fontWeight = FontWeight.Bold)
-
-
-                    }
-                    viewModel.CategoryListIsEmpty = !viewModel.CategoryListIsEmpty
-                }
             }
 
             Spacer(modifier = Modifier.height(16.dp))
-            if (!viewModel.ListIsEmpty){
+            if (!viewModel.ListIsEmpty ){
             LazyColumn(modifier = Modifier.fillMaxWidth()) {
 
                     items(notes) { note ->
@@ -197,12 +181,12 @@ fun Warning(){
     Column(
         Modifier
             .fillMaxWidth()
-            .padding(20.dp)){
-        ExclamationImage(Modifier
-            .align(CenterHorizontally))
-        Text(text = "No Note Found",Modifier
-
-            .align(CenterHorizontally),
-            fontSize = 20.sp, fontWeight = FontWeight.Bold)
+            .padding(20.dp),
+    horizontalAlignment = CenterHorizontally){
+            ExclamationImage(Modifier)
+            Text(text = "No Note Found",
+                Modifier,
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold)
     }
 }

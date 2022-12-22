@@ -124,7 +124,7 @@ fun CreateNoteScreen(
                    Column(Modifier
                        .padding(10.dp), horizontalAlignment = Alignment.CenterHorizontally) {
                        TransparentHintTextField(
-                           text = categoryState.text,
+                           text = categoryAddedState.text,
                            onValueChange = {
                                viewModel.enteredCategory(it)
                            },

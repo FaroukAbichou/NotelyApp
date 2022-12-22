@@ -3,10 +3,12 @@ package com.example.notelyapp.feature_note.presentation.CreateNoteScreen.compone
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.focus.FocusState
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
@@ -26,7 +28,8 @@ fun TransparentHintTextField(
     onFocusChange: (FocusState) -> Unit
 ) {
     Box(
-        modifier = modifier.border(0.8.dp, ButtonPurple)
+        modifier = modifier
+            .shadow(1.dp )
     ) {
         BasicTextField(
             value = text,

@@ -71,13 +71,13 @@ class NotesScreenViewModel @Inject constructor(
             }
         }
     }
-    var CategoryListIsEmpty= false
+
     fun searchCategory(value: String) {
         viewModelScope.launch {
             _notes.value = noteRepository.searchCategory(value)
             if (_notes.value.isEmpty()){
-                CategoryListIsEmpty = !CategoryListIsEmpty
-                Log.d("tag1",CategoryListIsEmpty.toString())
+                ListIsEmpty = !ListIsEmpty
+                Log.d("tag1",ListIsEmpty.toString())
             }
         }
     }

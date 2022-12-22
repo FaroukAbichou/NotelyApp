@@ -25,7 +25,7 @@ fun IntroImage() {
 fun ExclamationImage(modifier: Modifier) {
     val image= painterResource(id = R.drawable.noteexcla)
     Image(painter = image,contentDescription = "",
-        modifier = Modifier.width(150.dp).height(100.dp),
+        modifier = Modifier.width(300.dp).height(200.dp),
         contentScale = ContentScale.Fit,
     )
 

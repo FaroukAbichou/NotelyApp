@@ -24,7 +24,7 @@ fun CategoryAllItems(
         onClick = {
             selected = !selected
             if (selected){
-                onGetAllNotes(Category())
+                onGetAllNotes(Category(isSelected = true))
                 Log.d("tag","hello")
             }
         },

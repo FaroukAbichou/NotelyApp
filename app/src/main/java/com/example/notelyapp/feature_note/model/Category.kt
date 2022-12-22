@@ -8,6 +8,7 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class Category(
+    @PrimaryKey val id: Int?=null,
     val category:String= "",
-    @PrimaryKey val id: Int?=null
+    var isSelected:Boolean,
 )

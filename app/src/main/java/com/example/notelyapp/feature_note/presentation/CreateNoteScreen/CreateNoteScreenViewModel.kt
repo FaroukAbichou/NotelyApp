@@ -123,7 +123,8 @@ class CreateNoteScreenViewModel @Inject constructor(
             try {
                 noteRepository.insertCategory(
                     Category(
-                        category = category
+                        category = category,
+                        isSelected = true
                     )
                 )
                 getCategories()
