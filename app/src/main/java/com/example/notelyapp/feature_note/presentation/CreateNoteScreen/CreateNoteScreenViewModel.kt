@@ -25,16 +25,16 @@ class CreateNoteScreenViewModel @Inject constructor(
         savedStateHandle: SavedStateHandle
     ):ViewModel(){
 
-    private val _noteTitle = mutableStateOf(NoteTextfieldState(hint = "Enter Title..."))
+    private val _noteTitle = mutableStateOf(NoteTextfieldState())
     val noteTitle: State<NoteTextfieldState> = _noteTitle
 
-    private val _noteContent = mutableStateOf(NoteTextfieldState(hint = "Enter Your Note"))
+    private val _noteContent = mutableStateOf(NoteTextfieldState())
     val noteContent: State<NoteTextfieldState> = _noteContent
 
-    private val _noteCategory = mutableStateOf(NoteTextfieldState(hint = "Enter a new Category"))
+    private val _noteCategory = mutableStateOf(NoteTextfieldState())
     val noteCategory: State<NoteTextfieldState> = _noteCategory
 
-    private val _noteAddedCategory = mutableStateOf(NoteTextfieldState(hint = "Enter a new Category"))
+    private val _noteAddedCategory = mutableStateOf(NoteTextfieldState())
     val noteAddedCategory: State<NoteTextfieldState> = _noteAddedCategory
 
 
@@ -141,6 +141,11 @@ class CreateNoteScreenViewModel @Inject constructor(
 
     fun saveNote(){
         viewModelScope.launch {
+                _eventflow.emit(UiEvent.SaveNote)
+            if (noteTitle.value.text.isNotBlank()
+                && noteCategory.value.text.isNotBlank()
+                &&noteContent.value.text.isNotBlank()){
+
             try {
 
                 noteRepository.insertNote(
@@ -153,13 +158,13 @@ class CreateNoteScreenViewModel @Inject constructor(
                         id =currentNoteId
                     )
                 )
-                _eventflow.emit(UiEvent.SaveNote)
+
             } catch (e: InvalidNoteException){
                 _eventflow.emit(
-
                     UiEvent.ShowSnackbar(
                         message = e.message?:"Couldnt save Note"
                     ))
+            }
             }
         }
 
